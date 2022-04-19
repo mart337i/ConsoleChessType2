@@ -53,7 +53,7 @@ public class Board
         {
             return false;
         }
-        if (Sqares[x,y].Color != currenplayer)
+        if (Sqares[x,y]!.Color != currenplayer)
         {
             Console.WriteLine("Not your Peice ");
             return false;
