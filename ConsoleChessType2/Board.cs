@@ -2,63 +2,84 @@ namespace ConsoleChessType2;
 
 public class Board
 {
-    public static int[] Sqares;
-    bool[] occupied = new bool[Sqares.Length];
-    
+    public Peice?[,] Sqares;
+    public bool[,] Occupied;
+
     public Board()
     {
-        Sqares = new int[64];
+        Sqares = new Peice?[8,8];
+        Occupied = new bool[8,8];
         SetTable();
-        OccupiedField();
+        PeiceMap();
 
     }
 
-    public int MoveTo(int x, int y, int newX,int newY)
+    public void MoveTo(int x, int y, int newX, int newY)
     {
-        var oldpos = x * y;
-        var newPos = newX * newY;
-        if (!(8 * 8 < newPos) && newPos > 0)
+        if (!(8 * 8 < newX*newY) && newX*newY > -1)
         {
-            Sqares[oldpos] = Sqares[newPos];
+            Peice? pullVal = Sqares[x, y];
+            Sqares[newX, newY] = pullVal;
+            Sqares[x, y] = null;
+            Console.WriteLine($"you moved {pullVal} from {x},{y} to {newX},{newY}");
         }
-
-        return 0;
+        
+        //update peice map 
+        PeiceMap();
     }
 
-    public void OccupiedField()
+    private void PeiceMap()
     {
-        for (int i = 0; i < Sqares.Length; i++)
+        for (int i = 0; i < 8; i++)
         {
-            if (Sqares[i] == 0)
+            for (int j = 0; j < 8; j++)
             {
-                occupied[i] = false;
+                if (Sqares[i,j] == null)
+                {
+                    Occupied[i, j] = false;
+                }
+                else
+                {
+                    Occupied[i, j] = true;
+                }
             }
         }
+    }
+    
+    
+    public bool ValidateColorBeforeMove(int x, int y, Color currenplayer)
+    {
+        if (Sqares[x,y] == null)
+        {
+            return false;
+        }
+        if (Sqares[x,y].Color != currenplayer)
+        {
+            Console.WriteLine("Not your Peice ");
+            return false;
+        }
+        return true;
     }
 
     private void SetTable()
     {
-        Sqares[9] = Peice.White | Peice.Pawn;
-        Sqares[10] = Peice.White | Peice.Pawn;
-        Sqares[11] = Peice.White | Peice.Pawn;
-        Sqares[12] = Peice.White | Peice.Pawn;
-        Sqares[13] = Peice.White | Peice.Pawn;
-        Sqares[14] = Peice.White | Peice.Pawn;
-        Sqares[15] = Peice.White | Peice.Pawn;
-        Sqares[16] = Peice.White | Peice.Pawn;
-        Sqares[17] = Peice.White | Peice.Pawn;
+        Sqares[1, 0] = new Pawn(Color.Black);
+        Sqares[1, 1] = new Pawn(Color.Black);
+        Sqares[1, 2] = new Pawn(Color.Black);
+        Sqares[1, 3] = new Pawn(Color.Black);
+        Sqares[1, 4] = new Pawn(Color.Black);
+        Sqares[1, 5] = new Pawn(Color.Black);
+        Sqares[1, 6] = new Pawn(Color.Black);
+        Sqares[1, 7] = new Pawn(Color.Black);
 
-        
-        Sqares[56] = Peice.Black | Peice.Pawn;
-        Sqares[55] = Peice.Black | Peice.Pawn;
-        Sqares[54] = Peice.Black | Peice.Pawn;
-        Sqares[53] = Peice.Black | Peice.Pawn;
-        Sqares[52] = Peice.Black | Peice.Pawn;
-        Sqares[51] = Peice.Black | Peice.Pawn;
-        Sqares[50] = Peice.Black | Peice.Pawn;
-        Sqares[49] = Peice.Black | Peice.Pawn;
-        Sqares[48] = Peice.Black | Peice.Pawn;
+
+        Sqares[6, 0] = new Pawn(Color.White);
+        Sqares[6, 1] = new Pawn(Color.White);
+        Sqares[6, 2] = new Pawn(Color.White);
+        Sqares[6, 3] = new Pawn(Color.White);
+        Sqares[6, 4] = new Pawn(Color.White);
+        Sqares[6, 5] = new Pawn(Color.White);
+        Sqares[6, 6] = new Pawn(Color.White);
+        Sqares[6, 7] = new Pawn(Color.White);
     }
-    
-    
 }
