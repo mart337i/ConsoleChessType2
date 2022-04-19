@@ -14,7 +14,7 @@ public class Pawn : Peice
 
     public Pawn(Color color)
     {
-        this.Color = color;
+        Color = color;
         HasMovedOnce = false;
     }
 

@@ -7,6 +7,7 @@ namespace ConsoleChessType2
         
         private Color _currentPlayer;
         private bool _isCheckMate;
+        public static int[][] _numSquaresToEdge;
         private bool _isStaleMate;
 
         public Game()
@@ -14,6 +15,12 @@ namespace ConsoleChessType2
             _isCheckMate = false;
             _isStaleMate = false; 
             _currentPlayer = Color.Black;
+            
+            PrecomputedMoveData();
+            
+            Console.WriteLine(_numSquaresToEdge[1]);
+            
+            
         }
 
         public void RunGame()
@@ -68,7 +75,8 @@ namespace ConsoleChessType2
                         Console.WriteLine(e);
                     }
                 }
-
+                
+                
                 Console.WriteLine($"<----------->");
 
 
@@ -118,6 +126,32 @@ namespace ConsoleChessType2
                 
             }
             Console.WriteLine(" 0 1 2 3 4 5 6 7 ");
+        }
+        
+
+        private void PrecomputedMoveData()
+        {
+            for (int squareIndex = 0; squareIndex < 8; squareIndex++)
+            {
+                int y = squareIndex / 8;
+                int x = squareIndex - y * 8;
+
+                int north = 7 - y;
+                int south = y;
+                int west = x;
+                int east = 7 - x;
+
+                _numSquaresToEdge[squareIndex] = new int[8];
+                _numSquaresToEdge[squareIndex][0] = north;
+                _numSquaresToEdge[squareIndex][1] = south;
+                _numSquaresToEdge[squareIndex][2] = west;
+                _numSquaresToEdge[squareIndex][3] = east;
+                _numSquaresToEdge[squareIndex][4] = Math.Min(north, west);
+                _numSquaresToEdge[squareIndex][5] = Math.Min(south, east);
+                _numSquaresToEdge[squareIndex][6] = Math.Min(north, east);
+                _numSquaresToEdge[squareIndex][7] = Math.Min(south, west);
+                    
+            }
         }
      
 
