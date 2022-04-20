@@ -1,4 +1,4 @@
-namespace ConsoleChessType2
+namespace Chess
 {
     
     public class Game
@@ -26,6 +26,8 @@ namespace ConsoleChessType2
                         Console.WriteLine();
                     }
                 }
+            
+            RunGame();
         }
 
         public void RunGame()

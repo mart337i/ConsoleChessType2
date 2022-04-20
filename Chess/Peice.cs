@@ -1,4 +1,4 @@
-namespace ConsoleChessType2;
+namespace Chess;
 
 public class Peice
 {

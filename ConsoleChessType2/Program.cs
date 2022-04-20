@@ -1,11 +1,12 @@
-﻿namespace ConsoleChessType2
+﻿using Chess;
+
+namespace ConsoleChessType2
 {
     class Program
     {
         static void Main()
         {
-            Game game = new Game();
-            game.RunGame();
+            Game newgame = new Game();
         }
     }
 }
