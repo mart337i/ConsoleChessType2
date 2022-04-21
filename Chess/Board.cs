@@ -20,11 +20,23 @@ public class Board
     {
         if (!(8 * 8 < newX*newY) && newX*newY > -1)
         {
-            Peice? pullVal = Sqares[x, y];
-            Sqares[newX, newY] = pullVal;
-            Sqares[x, y] = null;
-            Console.WriteLine($"you moved {pullVal} from {x},{y} to {newX},{newY}");
+
+            if (Legalmove(x,y,newX,newY))
+            {
+                Console.WriteLine("i am here 3 ");
+
+                Peice? pullVal = Sqares[x, y];
+                Sqares[newX, newY] = pullVal;
+                Sqares[x, y] = null;
+                Console.WriteLine($"you moved {pullVal} from {x},{y} to {newX},{newY}");
+            }
+            else
+            {
+                Console.WriteLine($"move from x: {x} and y: {y} to x: {newX} and y: {newY} is an illigal move ");
+            }
         }
+
+        
         
         //update peice map 
         PeiceMap();
@@ -61,6 +73,20 @@ public class Board
             return false;
         }
         return true;
+    }
+
+    public bool Legalmove(int x, int y, int newX, int newY)
+    {
+        var currentPeice =  Sqares[x, y];
+        if (currentPeice != null)
+        {
+            if (currentPeice.Legalmove(x,y,newX,newY))
+            {
+                return true;
+            }
+            return false;
+        }
+        return false;
     }
 
     private void SetTable()

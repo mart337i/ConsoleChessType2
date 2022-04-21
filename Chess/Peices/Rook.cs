@@ -15,6 +15,17 @@ public class Rook : Peice
         Color = color;
         HasMovedOnce = false;
     }
+    
+    public override bool Legalmove(int y, int x, int newx, int newy)
+    {
+        if (HasMovedOnce)
+        {
+            return true;
+        }
+
+        return false;
+
+    }
 
     public override string ToString()
     {

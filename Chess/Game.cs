@@ -1,3 +1,5 @@
+using Chess.Peices;
+
 namespace Chess
 {
     
@@ -15,9 +17,6 @@ namespace Chess
             _isStaleMate = false; 
             _currentPlayer = Color.Black;
 
-
-            
-            
             RunGame();
         }
 
@@ -35,35 +34,40 @@ namespace Chess
                 {
                     try
                     {
+                        Console.Write("y value: ");
                         x = Convert.ToInt16(Console.ReadLine()?.Trim());
+                        Console.Write("x value: ");
                         y = Convert.ToInt16(Console.ReadLine()?.Trim());
                 
+                        Console.Write("New y value: ");
                         newX = Convert.ToInt16(Console.ReadLine()?.Trim());
+                        
+                        Console.Write("New x value: ");
                         newY = Convert.ToInt16(Console.ReadLine()?.Trim());
 
                         
-                        if (!(x > 0 && x < 8))
+                        if (!(x > -1 && x < 8))
                         {
                             Console.WriteLine($"{x} is an invalid input");
                             
                         }
-                        if (!(y > 0 && y < 8))
+                        if (!(y > -1 && y < 8))
                         {
                             Console.WriteLine($"{y} is an invalid input");
                             
                         }
-                        if (!(newX > 0 && newX < 8))
+                        if (!(newX > -1 && newX < 8))
                         {
                             Console.WriteLine($"{newX} is an invalid input");
                             
                         }
-                        if (!(newY > 0 && newY < 8))
+                        if (!(newY > -1 && newY < 8))
                         {
                             Console.WriteLine($"{newY} is an invalid input");
                             
                         }
 
-                        if (x > 0 && x < 8 && y > 0 && y < 8 && newX > 0 && newX < 8 && newY > 0 && newY < 8)
+                        if (x > -1 && x < 8 && y > -1 && y < 8 && newX > -1 && newX < 8 && newY > -1 && newY < 8)
                         {
                             input = false;
                         }
@@ -73,16 +77,22 @@ namespace Chess
                         Console.WriteLine(e);
                     }
                 }
-                
-                
+
                 Console.WriteLine($"<----------->");
 
 
                 if (Board.ValidateColorBeforeMove(x, y, _currentPlayer))
                 {
-                    Board.MoveTo(x,y,newX,newY);
+                    if (Board.Legalmove(x,y,newX,newY) == true) // rename to LegalMove
+                        {
+                            Console.WriteLine("i get here");
+                            Board.MoveTo(x,y,newX,newY);
+                        }
+                        else
+                        {
+                            Console.WriteLine($"Move x: {x} and y {y}, does not equal a legal move");
+                        }
                 }
-                Console.Clear();
             }
         }
 
@@ -116,14 +126,18 @@ namespace Chess
                 if (i % 8 == 0)
                 {
                    Console.Write("|");
-                   Console.Write((i-1)/8);
+                   Console.BackgroundColor = ConsoleColor.DarkGray;
+                   Console.Write(" "+ (i-1)/8 + " ");
                    Console.WriteLine();
                 }
                 i++;
                 Console.ResetColor();
                 
             }
-            Console.WriteLine(" 0 1 2 3 4 5 6 7 ");
+            Console.BackgroundColor = ConsoleColor.DarkGray;
+            Console.WriteLine(" 0 1 2 3 4 5 6 7    ");
+            Console.ResetColor();
+
         }
 
         private string SwitchTurn()

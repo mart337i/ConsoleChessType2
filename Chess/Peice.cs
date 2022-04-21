@@ -10,4 +10,10 @@ public class Peice
     {
         return $"{Identifiers}";
     }
+
+    public virtual bool Legalmove(int x, int y, int newx, int newy)
+    {
+        Console.WriteLine("no overide ");
+        return false;
+    }
 }
