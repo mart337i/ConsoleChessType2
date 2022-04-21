@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleChessType2", "Consol
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chess", "Chess\Chess.csproj", "{F39DA9CE-ED36-4D54-8890-85B772F8550D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChessGUI", "ChessGUI\ChessGUI.csproj", "{4BA45C41-29DE-4082-9DD1-363FA959BCAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F39DA9CE-ED36-4D54-8890-85B772F8550D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F39DA9CE-ED36-4D54-8890-85B772F8550D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F39DA9CE-ED36-4D54-8890-85B772F8550D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BA45C41-29DE-4082-9DD1-363FA959BCAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BA45C41-29DE-4082-9DD1-363FA959BCAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BA45C41-29DE-4082-9DD1-363FA959BCAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BA45C41-29DE-4082-9DD1-363FA959BCAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

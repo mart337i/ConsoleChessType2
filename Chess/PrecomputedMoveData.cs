@@ -35,5 +35,16 @@ public static class PrecomputedMoveData
                 _numSquaresToEdge[squareIndex][7] = Math.Min(south, west);
             }
         }
+        
+        if (_numSquaresToEdge != null)
+            for (int x = 0; x < _numSquaresToEdge.Length; x++)
+            {
+                for (int y = 0; y < _numSquaresToEdge[x].Length; y++)
+                {
+                    Console.WriteLine($"next {y}");
+                    Console.WriteLine(_numSquaresToEdge[x][y]);
+                    Console.WriteLine();
+                }
+            }
     }
 }

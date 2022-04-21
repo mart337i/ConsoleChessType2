@@ -1,3 +1,5 @@
+using Chess.Peices;
+
 namespace Chess;
 
 public class Board
@@ -71,7 +73,25 @@ public class Board
         Sqares[1, 5] = new Pawn(Color.Black);
         Sqares[1, 6] = new Pawn(Color.Black);
         Sqares[1, 7] = new Pawn(Color.Black);
+        
+        Sqares[0, 0] = new Rook(Color.Black);
+        Sqares[0, 7] = new Rook(Color.Black);
+        Sqares[0, 2] = new Bishup(Color.Black);
+        Sqares[0, 5] = new Bishup(Color.Black);
+        Sqares[0, 1] = new Knight(Color.Black);
+        Sqares[0, 6] = new Knight(Color.Black);
+        Sqares[0, 4] = new King(Color.Black);
+        Sqares[0, 3] = new Queen(Color.Black);
 
+
+        Sqares[7, 0] = new Rook(Color.White);
+        Sqares[7, 7] = new Rook(Color.White);
+        Sqares[7, 2] = new Bishup(Color.White);
+        Sqares[7, 5] = new Bishup(Color.White);
+        Sqares[7, 1] = new Knight(Color.White);
+        Sqares[7, 6] = new Knight(Color.White);
+        Sqares[7, 4] = new King(Color.White);
+        Sqares[7, 3] = new Queen(Color.White);
 
         Sqares[6, 0] = new Pawn(Color.White);
         Sqares[6, 1] = new Pawn(Color.White);

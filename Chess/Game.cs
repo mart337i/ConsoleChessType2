@@ -16,16 +16,7 @@ namespace Chess
             _currentPlayer = Color.Black;
 
 
-            if (PrecomputedMoveData._numSquaresToEdge != null)
-                for (int x = 0; x < PrecomputedMoveData._numSquaresToEdge.Length; x++)
-                {
-                    for (int y = 0; y < PrecomputedMoveData._numSquaresToEdge[x].Length; y++)
-                    {
-                        Console.WriteLine($"next {y}");
-                        Console.WriteLine(PrecomputedMoveData._numSquaresToEdge[x][y]);
-                        Console.WriteLine();
-                    }
-                }
+            
             
             RunGame();
         }
