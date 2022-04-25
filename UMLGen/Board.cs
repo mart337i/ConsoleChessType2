@@ -1,6 +1,4 @@
-using Chess.Peices;
-
-namespace Chess;
+namespace UMLGen;
 
 public class Board
 {
@@ -80,6 +78,7 @@ public class Board
         {
             if (currentPeice.Legalmove(x,y,newX,newY))
             {
+                Console.WriteLine($"from {x}, {y}, too {newX},{newY}");
                 return true;
             }
             return false;

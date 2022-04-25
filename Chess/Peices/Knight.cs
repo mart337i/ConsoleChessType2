@@ -2,8 +2,7 @@ namespace Chess.Peices;
 
 public class Knight : Peice
 {
-    public bool HasMovedOnce { get; set; }
-    
+
     // sealed ref 
     //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sealed
     public sealed override Color Color { get; set; }
@@ -13,7 +12,31 @@ public class Knight : Peice
     public Knight(Color color)
     {
         Color = color;
-        HasMovedOnce = false;
+        
+    }
+    
+    public override bool Legalmove(int x, int y, int newX, int newY)
+    {
+        Console.WriteLine($"pawn class : from {x}, {y}, too {newX},{newY}");
+
+        if (newX == x+1 && newY == y +2)
+        {
+            return true;
+            
+        }else if (newX == x - 1 && newY == y - 2)
+        {
+            return true;
+            
+        }else if (newX == x - 2 && newY == y - 1)
+        {
+            return true;
+            
+        }else if (newX == x + 2 && newY == y -1 )
+        {
+            return true;
+        }
+        return false;
+
     }
 
     public override string ToString()

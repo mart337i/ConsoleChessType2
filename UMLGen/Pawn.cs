@@ -1,4 +1,4 @@
-namespace Chess.Peices;
+namespace UMLGen;
 
 public class Pawn : Peice
 {
@@ -30,31 +30,40 @@ public class Pawn : Peice
         {
             if (Color == Color.White)
             {
-                if (newY == y-2)
+                if (HasMovedOnceMove[newX,newY] == HasMovedOnceMove[x,y])
                 {
+                    Console.WriteLine(HasMovedOnceMove[newX,newY]);
+                    Console.WriteLine(HasMovedOnceMove[x,y]);
                     HasMovedOnceBool = true;
                     return true;
                 }
             }
-            if (newY == y+2)
+            if (HasMovedOnceMove[newX,newY] == HasMovedOnceMove[x,y+1])
             {
+                Console.WriteLine(HasMovedOnceMove[newX,newY] == HasMovedOnceMove[x,y+1]);
+                Console.WriteLine("2");
                 HasMovedOnceBool = true;
                 return true;
             }
             return false;
+
+
         }
         else
         {
             if (Color == Color.White)
             {
-                if (newY == y-1)
+                if (HasNotMovedOnce[newX,newY] == HasNotMovedOnce[x,y])
                 {
+                    Console.WriteLine(HasNotMovedOnce[newX,newY]);
+                    Console.WriteLine(HasNotMovedOnce[x,y]);
                     HasMovedOnceBool = true;
                     return true;
                 }
             }
-            if (newY == y +1  )
+            if (HasNotMovedOnce[newX,newY] == HasNotMovedOnce[x,y+2] )
             {
+                Console.WriteLine(HasNotMovedOnce[newX,newY] == HasNotMovedOnce[x,y+2] );
                 HasMovedOnceBool = true;
                 return true;
             }
