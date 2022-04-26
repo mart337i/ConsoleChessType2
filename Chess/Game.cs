@@ -39,15 +39,15 @@ namespace Chess
                     try
                     {
                         Console.Write("y value: ");
-                        x = Convert.ToInt16(Console.ReadLine()?.Trim());
-                        Console.Write("x value: ");
                         y = Convert.ToInt16(Console.ReadLine()?.Trim());
+                        Console.Write("x value: ");
+                        x = Convert.ToInt16(Console.ReadLine()?.Trim());
                 
                         Console.Write("New y value: ");
-                        newX = Convert.ToInt16(Console.ReadLine()?.Trim());
+                        newY = Convert.ToInt16(Console.ReadLine()?.Trim());
                         
                         Console.Write("New x value: ");
-                        newY = Convert.ToInt16(Console.ReadLine()?.Trim());
+                        newX = Convert.ToInt16(Console.ReadLine()?.Trim());
 
                         
                         if (!(x > -1 && x < 8))
@@ -60,9 +60,9 @@ namespace Chess
                             Console.WriteLine($"{y} is an invalid input");
                             
                         }
-                        if (!(newX > -1 && newX < 8))
+                        if (!(newY > -1 && newY < 8))
                         {
-                            Console.WriteLine($"{newX} is an invalid input");
+                            Console.WriteLine($"{newY} is an invalid input");
                             
                         }
                         if (!(newY > -1 && newY < 8))
@@ -71,7 +71,7 @@ namespace Chess
                             
                         }
 
-                        if (x > -1 && x < 8 && y > -1 && y < 8 && newX > -1 && newX < 8 && newY > -1 && newY < 8)
+                        if (x > -1 && x < 8 && y > -1 && y < 8 && newY > -1 && newY < 8 && newX > -1 && newX < 8)
                         {
                             input = false;
                         }
@@ -85,12 +85,12 @@ namespace Chess
                 Console.WriteLine($"<----------->");
 
 
-                if (Board.ValidateColorBeforeMove(x, y, _currentPlayer))
+                if (Board.ValidateColorBeforeMove(y,x, _currentPlayer))
                 {
-                    if (Board.Legalmove(x,y,newX,newY) == true) // rename to LegalMove
+                    if (Board.Legalmove(y,x,newY,newX) == true) // rename to LegalMove
                     {
                         Console.WriteLine("i get here");
-                        Board.MoveTo(x,y,newX,newY);
+                        Board.MoveTo(y,x,newY,newX);
                         SwitchTurn();
                     }
                     else

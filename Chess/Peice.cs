@@ -12,7 +12,7 @@ public class Peice
         return $"{Identifiers}";
     }
 
-    public virtual bool Legalmove(int x, int y, int newx, int newy)
+    public virtual bool Legalmove(int x, int y, int NewY, int NewX)
     {
         Console.WriteLine("no overide ");
         return false;

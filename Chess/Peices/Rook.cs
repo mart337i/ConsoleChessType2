@@ -16,7 +16,7 @@ public class Rook : Peice
         HasMovedOnce = false;
     }
     
-    public override bool Legalmove(int y, int x, int newx, int newy)
+    public override bool Legalmove(int y, int x, int NewY, int newy)
     {
         if (HasMovedOnce)
         {

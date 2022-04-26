@@ -17,7 +17,7 @@ public class Pawn : Peice
         _hasMovedOnceBool = false;
     }
 
-    public override bool Legalmove(int x, int y, int newX, int newY)
+    public override bool Legalmove(int y, int x, int newY, int newX)
     {
         Console.WriteLine($"pawn class : from {x}, {y}, too {newX},{newY}");
         Console.WriteLine($"{newY} == {y}");
@@ -26,11 +26,9 @@ public class Pawn : Peice
         {
             if (Color == Color.White)
             {
-              
-
-                if (newX == x-2)
+                if (newY == y-2)
                 {
-                    Console.WriteLine("yes");
+                    Console.WriteLine("yes what");
                     _hasMovedOnceBool = true;
                     return true;
                 }

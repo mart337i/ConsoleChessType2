@@ -16,16 +16,16 @@ public class Board
 
     }
 
-    public void MoveTo(int x, int y, int newX, int newY)
+    public void MoveTo(int y, int x, int newY, int newX)
     {
         if (!(8 * 8 < newX*newY) && newX*newY > -1)
         {
 
             if (Legalmove(x,y,newX,newY))
             {
-                Peice? pullVal = Sqares[x, y];
-                Sqares[newX, newY] = pullVal;
-                Sqares[x, y] = null;
+                Peice? pullVal = Sqares[y,x];
+                Sqares[y,x] = pullVal;
+                Sqares[y,x] = null;
                 Console.WriteLine($"you moved {pullVal} from {x},{y} to {newX},{newY}");
             }
             else
@@ -59,13 +59,13 @@ public class Board
     }
     
     
-    public bool ValidateColorBeforeMove(int x, int y, Color currenplayer)
+    public bool ValidateColorBeforeMove(int y, int x, Color currenplayer)
     {
-        if (Sqares[x,y] == null)
+        if (Sqares[y,x] == null)
         {
             return false;
         }
-        if (Sqares[x,y]!.Color != currenplayer)
+        if (Sqares[y,x]!.Color != currenplayer)
         {
             Console.WriteLine("Not your Peice ");
             return false;
@@ -73,18 +73,19 @@ public class Board
         return true;
     }
 
-    public bool Legalmove(int x, int y, int newX, int newY)
+    public bool Legalmove(int y, int x, int newY, int newX)
     {
-        var currentPeice =  Sqares[x, y];
+        var currentPeice =  Sqares[y,x];
         if (currentPeice != null)
         {
-            if (currentPeice.Legalmove(x,y,newX,newY))
+            if (currentPeice.Legalmove(y,x,newY,newX))
             {
                 return true;
             }
 
             return false;
         }
+        Console.WriteLine("Board: not 2 legal move");
         return false;
     }
 

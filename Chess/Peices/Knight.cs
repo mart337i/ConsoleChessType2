@@ -15,23 +15,23 @@ public class Knight : Peice
         
     }
     
-    public override bool Legalmove(int x, int y, int newX, int newY)
+    public override bool Legalmove(int x, int y, int newY, int newX)
     {
-        Console.WriteLine($"Knight class : from {x}, {y}, too {newX},{newY}");
+        Console.WriteLine($"Knight class : from {x}, {y}, too {newY},{newX}");
 
-        if (newX == x+1 && newY == y +2)
+        if (newY == x+1 && newX == y +2)
         {
             return true;
             
-        }else if (newX == x - 1 && newY == y - 2)
+        }else if (newY == x - 1 && newX == y - 2)
         {
             return true;
             
-        }else if (newX == x - 2 && newY == y - 1)
+        }else if (newY == x - 2 && newX == y - 1)
         {
             return true;
             
-        }else if (newX == x + 2 && newY == y -1 )
+        }else if (newY == x + 2 && newX == y -1 )
         {
             return true;
         }
