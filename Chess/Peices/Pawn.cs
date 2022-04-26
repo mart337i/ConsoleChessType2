@@ -2,12 +2,9 @@ namespace Chess.Peices;
 
 public class Pawn : Peice
 {
-    public bool HasMovedOnceBool { get; set; }
-    
-    public int[,] HasMovedOnceMove { get; set; }
-    public int[,] HasNotMovedOnce { get; set; }
+    private bool _hasMovedOnceBool;
 
-    
+
     // sealed ref 
     //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sealed
     public sealed override Color Color { get; set; }
@@ -17,30 +14,33 @@ public class Pawn : Peice
     public Pawn(Color color)
     {
         Color = color;
-        HasMovedOnceBool = false;
-
-        HasMovedOnceMove = new int[8, 8];
-        HasNotMovedOnce = new int[8, 8];
+        _hasMovedOnceBool = false;
     }
 
     public override bool Legalmove(int x, int y, int newX, int newY)
     {
         Console.WriteLine($"pawn class : from {x}, {y}, too {newX},{newY}");
-        if (HasMovedOnceBool)
+        Console.WriteLine($"{newY} == {y}");
+        Console.WriteLine($"{newX} == {x-2}");
+        if (!_hasMovedOnceBool)
         {
             if (Color == Color.White)
             {
-                if (newY == y-2)
+              
+
+                if (newX == x-2)
                 {
-                    HasMovedOnceBool = true;
+                    Console.WriteLine("yes");
+                    _hasMovedOnceBool = true;
                     return true;
                 }
             }
             if (newY == y+2)
             {
-                HasMovedOnceBool = true;
+                _hasMovedOnceBool = true;
                 return true;
             }
+
             return false;
         }
         else
@@ -49,19 +49,17 @@ public class Pawn : Peice
             {
                 if (newY == y-1)
                 {
-                    HasMovedOnceBool = true;
+                    _hasMovedOnceBool = true;
                     return true;
                 }
             }
-            if (newY == y +1  )
+            if (newY == y +1)
             {
-                HasMovedOnceBool = true;
+                _hasMovedOnceBool = true;
                 return true;
             }
         }
-
         return false;
-
     }
 
     public override string ToString()

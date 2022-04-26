@@ -5,7 +5,8 @@ namespace Chess
     
     public class Game
     {
-        public Board Board = new();
+        private Grapics boardGrapics;
+        public Board Board;
         
         private Color _currentPlayer;
         private bool _isCheckMate;
@@ -13,10 +14,13 @@ namespace Chess
 
         public Game()
         {
+            boardGrapics = new Grapics();
+            Board = new Board();
+            
             _isCheckMate = false;
             _isStaleMate = false; 
-            _currentPlayer = Color.Black;
-
+            _currentPlayer = Color.White;
+            
             RunGame();
         }
 
@@ -26,9 +30,9 @@ namespace Chess
             {
                 int x  = 0 , y = 0 , newX = 0, newY = 0;
                 bool input = true;
-
-                Console.WriteLine($"Turn: {SwitchTurn()}");
-                PrintBoard(Board.Sqares);
+                
+                boardGrapics.printTurn(_currentPlayer);
+                boardGrapics.PrintBoard(Board.Sqares);
 
                 while (input)
                 {
@@ -84,71 +88,29 @@ namespace Chess
                 if (Board.ValidateColorBeforeMove(x, y, _currentPlayer))
                 {
                     if (Board.Legalmove(x,y,newX,newY) == true) // rename to LegalMove
-                        {
-                            Console.WriteLine("i get here");
-                            Board.MoveTo(x,y,newX,newY);
-                        }
-                        else
-                        {
-                            Console.WriteLine($"Move x: {x} and y {y}, does not equal a legal move");
-                        }
+                    {
+                        Console.WriteLine("i get here");
+                        Board.MoveTo(x,y,newX,newY);
+                        SwitchTurn();
+                    }
+                    else
+                    {
+                        Console.WriteLine("move not legal");
+                    }
+                    
+                    Console.WriteLine($"<----------->");
                 }
             }
         }
+        
 
-        private void PrintBoard(Peice?[,] array)
-        {
-            int i = 1;
-            foreach (var fields in array)
-            {
-                // negative number is = right, positive = left 
-                var formatedFeild = $"{fields,-1}";
-                
-                
-                // why does this not work? 
-                if (fields == null)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("|" + $" ");
-                }
-                else if(fields.Color == Color.White)
-                {
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Write("|" + $"{formatedFeild}");
-                }
-                else if (fields.Color == Color.Black)
-                {
-                    Console.ForegroundColor = ConsoleColor.Black;
-                    Console.Write("|" + $"{formatedFeild}");
-                }
-                Console.ResetColor();
-                
-                if (i % 8 == 0)
-                {
-                   Console.Write("|");
-                   Console.BackgroundColor = ConsoleColor.DarkGray;
-                   Console.Write(" "+ (i-1)/8 + " ");
-                   Console.WriteLine();
-                }
-                i++;
-                Console.ResetColor();
-                
-            }
-            Console.BackgroundColor = ConsoleColor.DarkGray;
-            Console.WriteLine(" 0 1 2 3 4 5 6 7    ");
-            Console.ResetColor();
-
-        }
-
-        private string SwitchTurn()
+        private void SwitchTurn()
         {
             if (Color.Black == _currentPlayer)
             {
                 _currentPlayer = Color.White;
-                return $"white";
             }
             _currentPlayer = Color.Black;
-            return $"black";
         }
     }
 }

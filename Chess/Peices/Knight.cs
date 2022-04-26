@@ -17,7 +17,7 @@ public class Knight : Peice
     
     public override bool Legalmove(int x, int y, int newX, int newY)
     {
-        Console.WriteLine($"pawn class : from {x}, {y}, too {newX},{newY}");
+        Console.WriteLine($"Knight class : from {x}, {y}, too {newX},{newY}");
 
         if (newX == x+1 && newY == y +2)
         {

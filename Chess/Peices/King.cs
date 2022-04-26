@@ -2,7 +2,7 @@ namespace Chess.Peices;
 
 public class King : Peice
 {
-    public bool HasMovedOnce { get; set; }
+    public bool IsInCheck;
     
     // sealed ref 
     //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sealed
@@ -13,7 +13,7 @@ public class King : Peice
     public King(Color color)
     {
         Color = color;
-        HasMovedOnce = false;
+        IsInCheck = false;
     }
 
     public override string ToString()
