@@ -6,7 +6,7 @@ namespace Chess
     public class Game
     {
         private Grapics boardGrapics;
-        public Board Board;
+        private Board Board;
         
         private Color _currentPlayer;
         private bool _isCheckMate;
@@ -89,13 +89,13 @@ namespace Chess
                 {
                     if (Board.Legalmove(y,x,newY,newX) == true) // rename to LegalMove
                     {
-                        Console.WriteLine("i get here");
+                        Console.WriteLine($"moved {Board.Sqares[y,x]} to {newY},{newX}");
                         Board.MoveTo(y,x,newY,newX);
                         SwitchTurn();
                     }
                     else
                     {
-                        Console.WriteLine("move not legal");
+                        Console.WriteLine($"is not a legalmove for {Board.Sqares[y,x]?.ToString()} at {y}, {x} ");
                     }
                     
                     Console.WriteLine($"<----------->");
