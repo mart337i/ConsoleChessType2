@@ -2,28 +2,20 @@ namespace Chess.Peices;
 
 public class Rook : Peice
 {
-    public bool HasMovedOnce { get; set; }
-    
     // sealed ref 
     //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sealed
-    public sealed override Color Color { get; set; }
+    public sealed override Color Color { get; }
 
     private string Identifiers = "R";
 
     public Rook(Color color)
     {
         Color = color;
-        HasMovedOnce = false;
     }
-    
-    public override bool Legalmove(int y, int x, int newY, int newX)
-    {
-        if (HasMovedOnce)
-        {
-            return true;
-        }
 
-        return false;
+    public override bool Legalmove(int x, int y, int newY, int newX)
+    {
+        return true;
 
     }
 

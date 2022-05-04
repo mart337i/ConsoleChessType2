@@ -31,7 +31,7 @@ namespace Chess
                 int x  = 0 , y = 0 , newX = 0, newY = 0;
                 bool input = true;
                 
-                boardGrapics.printTurn(_currentPlayer);
+                boardGrapics.PrintTurn(_currentPlayer);
                 boardGrapics.PrintBoard(Board.Sqares);
 
                 while (input)
@@ -42,37 +42,20 @@ namespace Chess
                         y = Convert.ToInt16(Console.ReadLine()?.Trim());
                         Console.Write("x value: ");
                         x = Convert.ToInt16(Console.ReadLine()?.Trim());
-                
-                        Console.Write("New y value: ");
-                        newY = Convert.ToInt16(Console.ReadLine()?.Trim());
-                        
-                        Console.Write("New x value: ");
-                        newX = Convert.ToInt16(Console.ReadLine()?.Trim());
-
                         
                         if (!(x > -1 && x < 8))
                         {
                             Console.WriteLine($"{x} is an invalid input");
-                            
                         }
                         if (!(y > -1 && y < 8))
                         {
                             Console.WriteLine($"{y} is an invalid input");
-                            
                         }
-                        if (!(newY > -1 && newY < 8))
+                        
+                        if (x > -1 && x < 8 && y > -1 && y < 8)
                         {
-                            Console.WriteLine($"{newY} is an invalid input");
-                            
-                        }
-                        if (!(newY > -1 && newY < 8))
-                        {
-                            Console.WriteLine($"{newY} is an invalid input");
-                            
-                        }
+                            boardGrapics.PrintBoard(Board.Sqares, Board.CurrentLegalmove(y, x));
 
-                        if (x > -1 && x < 8 && y > -1 && y < 8 && newY > -1 && newY < 8 && newX > -1 && newX < 8)
-                        {
                             input = false;
                         }
                     }
@@ -81,6 +64,40 @@ namespace Chess
                         Console.WriteLine(e);
                     }
                 }
+                bool input2 = true;
+                while (input2)
+                {
+                    try
+                    {
+                        Console.Write("New y value: ");
+                        newY = Convert.ToInt16(Console.ReadLine()?.Trim());
+                        
+                        Console.Write("New x value: ");
+                        newX = Convert.ToInt16(Console.ReadLine()?.Trim());
+
+                            
+                        if (!(newY > -1 && newY < 8))
+                        {
+                            Console.WriteLine($"{newY} is an invalid input");
+                            
+                        }
+                        if (!(newY > -1 && newY < 8))
+                        {
+                            Console.WriteLine($"{newY} is an invalid input");
+                            
+                        }
+
+                        if (newY > -1 && newY < 8 && newX > -1 && newX < 8)
+                        {
+                            input2 = false;
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                }   
 
                 Console.WriteLine($"<----------->");
 

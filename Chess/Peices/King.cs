@@ -6,14 +6,18 @@ public class King : Peice
     
     // sealed ref 
     //https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/sealed
-    public sealed override Color Color { get; set; }
+    public override Color Color { get; }
 
     private string Identifiers = "K";
 
     public King(Color color)
     {
         Color = color;
-        IsInCheck = false;
+    }
+    
+    public override bool Legalmove(int x, int y, int newY, int newX)
+    {
+        return true;
     }
 
     public override string ToString()

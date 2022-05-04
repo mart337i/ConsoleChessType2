@@ -1,5 +1,5 @@
 using Chess.Peices;
-
+       
 namespace Chess;
 
 public class Board
@@ -45,9 +45,19 @@ public class Board
             }
         }
     }
+
+    public bool[,] CurrentLegalmove(int y, int x)
+    {
+        if (Sqares[y,x] != null)
+        {
+            var peice = Sqares[y, x];
+            return peice!.NextLegalmove(y,x);
+        }
+        return Sqares[x, y]?.NextLegalmove(y,x);
+    }
     
     
-    public bool ValidateColorBeforeMove(int y, int x, Color currenplayer)
+    public bool ValidateColorBeforeMove(int y, int x, Color currenplayer)      
     {
         if (Sqares[y,x] == null)
         {
