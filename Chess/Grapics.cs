@@ -6,7 +6,10 @@ public class Grapics
     {
         Console.WriteLine($"Turn: {currentPlayer}");
     }
-
+    
+    // overloading method is run at compile time 
+    // while overideing [seen in Pawn / peice class] is at runtime 
+    // meaning overloading is static polymorphism and overiding is dynamic polymorphism 
     public void PrintBoard(Peice?[,] array)
     {
         int i = 1;
@@ -48,6 +51,7 @@ public class Grapics
         Console.WriteLine(" 0 1 2 3 4 5 6 7    ");
         Console.ResetColor();
     }
+    
     public void PrintBoard(Peice?[,] array, bool[,] posibleMoves)
     {
         int i = 1;
@@ -103,5 +107,4 @@ public class Grapics
              
         Console.ResetColor();
     }
-    
 }

@@ -46,7 +46,7 @@ public class Board
         }
     }
 
-    public bool[,] CurrentLegalmove(int y, int x)
+    public bool[,]? CurrentLegalmove(int y, int x)
     {
         if (Sqares[y,x] != null)
         {
